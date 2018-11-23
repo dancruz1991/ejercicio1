@@ -30,7 +30,7 @@ productCtrl.editProduct = async(req, res, next) => {
     const product = {
         name: req.body.name,
         cost: req.body.cost,
-        img: { data: fs.readFileSync(req.files.userPhoto.path), contentType: "image/png" }
+        img: req.body.img
     };
     await Product.findByIdAndUpdate(id, { $set: product }, { new: true });
     res.json({ status: 'Product Updated' });

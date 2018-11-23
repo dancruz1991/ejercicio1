@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product';
@@ -13,10 +13,13 @@ declare var M: any;
 })
 export class ProductsComponent implements OnInit {
 
-  constructor(private productService: ProductService) { }
+  @ViewChild('textFile') textFile: ElementRef;
+
+  constructor(private productService: ProductService) {   }
 
   ngOnInit() {
     this.getProducts();
+
   }
   addProduct(form?: NgForm) {
     this.productService.selectedProduct.name = form.controls['name'].value;
@@ -75,6 +78,7 @@ export class ProductsComponent implements OnInit {
   resetForm(form?: NgForm) {
     if (form) {
       form.reset();
+    this.textFile.nativeElement.value = '';
       this.productService.selectedProduct = new Product();
     }
   }

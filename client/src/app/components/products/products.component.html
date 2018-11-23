@@ -1,4 +1,5 @@
-<div class="container">
+<div class="container" margin>
+    <br>
     <div class="row">
         <div class="col s5">
             <div class="card">
@@ -12,13 +13,23 @@
                             <div class="input-field col-s12">
                                 <input type="text" name="cost" #name="ngModel" [(ngModel)]="productService.selectedProduct.cost" value="0" placeholder="Costo del producto">
                             </div>
-                            <div class="input-field col-s12">
-                                <input type="file" name="img" (change)="onFileChange($event)">
+                            <div class="file-field input-field col-s12">
+                                <div style="background-color: #C81685" class="btn">
+                                    <span>File</span>
+                                    <input type="file" name="img" (change)="onFileChange($event)">
+                                </div>
+                                <div class="file-path-wrapper">
+                                    <input #textFile class="file-path validate" type="text">
+                                </div>
                             </div>
+                            <div class="input-field col-s12">
+                                <img width="100px" src="{{ productService.selectedProduct.img }}" />
+                            </div>
+                            <!-- <input type="file" name="img" (change)="onFileChange($event)"> -->
                             <div class="card-action">
                                 <div class="input-field col-s12">
-                                    <button class="btn right" style="margin-left: 2px;" (click)="resetForm(productForm)">Limpiar</button>
-                                    <button class="btn right">Guardar</button>
+                                    <button class="btn right" style="margin-left: 2px; background-color: #666666;" (click)="resetForm(productForm)">Limpiar</button>
+                                    <button style="background-color: #C81685" class="btn right">Guardar</button>
                                 </div>
                             </div>
                         </div>
@@ -31,16 +42,19 @@
                 <thead>
                     <th>Nombre</th>
                     <th>Costo</th>
+                    <th>Imagen</th>
+                    <th>Acciones</th>
                 </thead>
                 <tbody>
                     <tr *ngFor="let product of productService.products">
                         <td>{{ product.name }}</td>
                         <td>{{ product.cost }}</td>
+                        <td> <img width="100px" src="{{ product.img }}" /></td>
                         <td>
-                            <a (click)="editProduct(product)">
+                            <a style="background-color: #666666" class="btn tooltipped" data-position="top" data-tooltip="Editar" (click)="editProduct(product)">
                                 <i class="material-icons">edit</i>
                             </a>
-                            <a (click)="deleteProduct(product._id, productForm)">
+                            <a style="background-color: #FF0000" class="btn tooltipped" data-position="bottom" data-tooltip="Eliminar" (click)="deleteProduct(product._id, productForm)">
                                 <i class="material-icons">delete</i>
                             </a>
                         </td>
