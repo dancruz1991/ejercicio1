@@ -48,7 +48,7 @@
                 <tbody>
                     <tr *ngFor="let product of productService.products">
                         <td>{{ product.name }}</td>
-                        <td>{{ product.cost }}</td>
+                        <td>{{ product.cost | currency}} </td>
                         <td> <img width="100px" src="{{ product.img }}" /></td>
                         <td>
                             <a style="background-color: #666666" class="btn tooltipped" data-position="top" data-tooltip="Editar" (click)="editProduct(product)">
