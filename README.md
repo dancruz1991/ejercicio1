@@ -2,6 +2,8 @@
 
 #Pasos a seguir
 
+#Se clona el proyecto desde git a través de la liga compartida, dentro de una carpeta deseada
+
 #Se deben instalar las dependencias con: "npm i" sobre la raíz del proyecto (ejercicio1)
 
 #Se entra a la carpeta ejercicio1/client y nuevamente se instalan las dependencias con: "npm i"
