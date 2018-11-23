@@ -2,8 +2,6 @@ const express = require('express');
 const morgan = require("morgan");
 const cors = require('cors');
 const path = require("path");
-const multer = require("multer");
-const fs = require("fs");
 const app = express();
 
 const { mongoose } = require('./database');
@@ -15,7 +13,6 @@ app.set('port', process.env.PORT || 3000);
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(cors());
-app.use(multer({ dest: "./uploads/" }).single('img'));
 //app.use(cors({ origin: 'http://localhost:4200' }));
 
 // Routes
